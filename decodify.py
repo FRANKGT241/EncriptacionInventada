@@ -9,10 +9,7 @@ gram_array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k','l', 'm', 'n
 
 def reverse_base64(password_with_hexa):
     bytes_word = base64.b64decode(password_with_hexa.encode('utf-8'))
-    print(bytes_word)
     new_password = binascii.unhexlify(bytes_word).decode('utf-8')
-    print(new_password)
-    
     return new_password
 
 
