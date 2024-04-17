@@ -42,13 +42,13 @@ def select_character_in_gram_rotated_with_primes(passw_without_codify):#Genera l
     global gram_array  
     number_of_rotates = count_primes_in_length(passw_without_codify)
     rotated = rotated_array(gram_array, number_of_rotates)  
-    gram_array = rotated  
     new_password =""  
     for array_input in passw_without_codify:
         index = gram_array.index(array_input)#Toma la posicion letra por letra de la gramatica ya rotada
         new_password = new_password + "" + rotated[index]#Genera una nueva contraseña a bas de las posiciones de la gramtica anterior para generar una contraseña totalmente nueva
     with open("PimosKey.txt", "w") as f:#Guarda la cantidad de rotaciones en numeros primos
         f.write(str(number_of_rotates))
+    print("Contra: "+new_password)
     return new_password
 
 
@@ -58,10 +58,15 @@ def count_primes_in_length(passw_without_codify):#Cuentas los numeros primos
     return count
 
 def generate_hexa(password):
+    print(password)
     newpasword=select_character_in_gram_rotated(password)
+    print(newpasword)
     password_with_hexa  = binascii.hexlify(newpasword.encode()).decode()
+    print(password_with_hexa)
     newpasword=select_character_in_gram_rotated_with_primes(password_with_hexa)
+    print(newpasword)
     password_with_hexa  = binascii.hexlify(newpasword.encode()).decode()
+    print(password_with_hexa)
     return password_with_hexa
 
 def generate_base64(password_with_hexa):#Generacion a Base64
@@ -86,7 +91,7 @@ def password_codify(password):
     final_passowrd=save_key_N_characters(pref,character_no)
     return final_passowrd
 
-password = "sipidipi"
+password = "yo"
 
 print(password_codify(password))
 
